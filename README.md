@@ -6,17 +6,16 @@ This project is still a work in progress.
 
 ## Getting Started
 
-Use your favorite NodeJS package manager to install the required dependencies to run Twitch Notifier.
+* Use your favorite NodeJS package manager to install the required dependencies to run Twitch Notifier.
+  * NPM: `npm install`
+  * Yarn: `yarn install`
 
-NPM: `npm install`
-Yarn: `yarn install`
-
-Using your preferred text editor, copy `.env.dist` to `.env` and configure your instance of Twitch Notifier.
+* Using your preferred text editor, copy `.env.dist` to `.env` and configure your instance of Twitch Notifier.
 
 | Variable | Info |
 | --- | --- |
-| TWITCH_CLIENT_ID | Your Twitch Application Client ID. You can obtain this from the [Twitch Developer Console](https://dev.twitch.tv/console/) |
-| TWITCH_CLIENT_SECRET | Your Twitch Application Client Secret. You can obtain this from the [Twitch Developer Console](https://dev.twitch.tv/console/) |
+| TWITCH_CLIENT_ID | Your Twitch Application Client ID. You can obtain this from the [Twitch Developer Console.](https://dev.twitch.tv/console/) |
+| TWITCH_CLIENT_SECRET | Your Twitch Application Client Secret. You can obtain this from the [Twitch Developer Console.](https://dev.twitch.tv/console/) |
 | WEBHOOK_URL | A Discord Webhook URL used to send notfiications. You can learn more about creating Webhooks in Discord [here.](https://support.discord.com/hc/en-us/articles/228383668-Intro-to-Webhooks) |
 | TWITCH_CHANNELS | A comma separated list of Twitch usernames to monitor and make go-live announcements for. |
 | LIVE_TEXT_ANNOUNCEMENT | The text that is sent when a monitored channel goes live. |
