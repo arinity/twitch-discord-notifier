@@ -10,6 +10,8 @@ This project is still a work in progress.
   * NPM: `npm install`
   * Yarn: `yarn install`
 
+* Create your Database by running: `npx knex migrate:latest`
+
 * Using your preferred text editor, copy `.env.dist` to `.env` and configure your instance of Twitch Notifier.
 
 | Variable | Info |
