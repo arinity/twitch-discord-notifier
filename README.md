@@ -20,4 +20,8 @@ This project is still a work in progress.
 | TWITCH_CHANNELS | A comma separated list of Twitch usernames to monitor and make go-live announcements for. |
 | LIVE_TEXT_ANNOUNCEMENT | The text that is sent when a monitored channel goes live. |
 
+* Using your favorite NodeJS package manager, run the provided 'start' script.
+  * NPM: `npm run start`
+  * Yarn: `yarn run start`
+
 NOTE: The first time you run Twitch Notifier, you will be asked to authenticate with Twitch using a provided URL.
