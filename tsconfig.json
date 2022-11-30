@@ -49,6 +49,12 @@
             "@types/*": ["src/types/*"],
             "@interaces/*": ["src/intefaces/*"],
             "@modules/*": ["src/modules/*"]
-        }
+        },
+
+        // Types
+        "typeRoots": [
+            "./node_modules/@types",
+            "./src/types",
+        ]
     }
 }
