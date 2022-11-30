@@ -1,12 +1,13 @@
 import axios from 'axios';
 import express, { Express, Request, Response } from 'express';
 import type { TokenResponse, TokenStorage } from 'interfaces/Token';
-import { promises as fs } from 'fs';
+import EventEmitter from 'node:events';
 
-export default class Web {
+export default class Web extends EventEmitter {
     private app: Express;
 
     constructor() {
+        super();
         this.app = express();
         this.app.get('/', async (req: Request, res: Response) => {
             try {
@@ -17,24 +18,23 @@ export default class Web {
                         client_secret: process.env.TWITCH_CLIENT_SECRET,
                         code: req.query.code,
                         grant_type: 'authorization_code',
-                        redirect_uri: 'http://localhost:3000'
+                        redirect_uri: 'http://localhost:3000',
                     }
                 );
                 const tokenData: TokenStorage = {
                     accessToken: data.access_token,
                     refreshToken: data.refresh_token,
                     expiresIn: 0,
-                    obtainmentTimestamp: Math.floor(new Date().getTime()) / 1000
+                    obtainmentTimestamp: Math.floor(new Date().getTime()) / 1000,
                 };
-                await fs.writeFile('./token.json', JSON.stringify(tokenData, null, 4));
-                console.log(data);
+                this.emit('recievedToken', tokenData);
             } catch (error) {
                 console.error(error);
             }
-            res.send('Authorized.');
+            res.send('Authorized. You may close this page.');
         })
         this.app.get('/auth', (_: Request, res: Response) => {
-            return res.redirect(`https://id.twitch.tv/oauth2/authorize?client_id=${process.env.TWITCH_CLIENT_ID}&response_type=code&scope&redirect_uri=http://localhost:3000`)
+            return res.redirect(`https://id.twitch.tv/oauth2/authorize?client_id=${process.env.TWITCH_CLIENT_ID}&response_type=code&scope&redirect_uri=http://localhost:3000`);
         });
         this.app.listen(3000, () => {
             console.log('[WEB] Listening on http://127.0.0.1:3000');
